@@ -1,1 +1,3 @@
-# This folder contains all scripts created for demonstration by DIST.
+# Content
+
+This folder contains all scripts created for demonstration by DIST.
