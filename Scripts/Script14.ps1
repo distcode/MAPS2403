@@ -53,6 +53,8 @@ foreach ( $tempcomputer in $computers ) {
     $AllComputers += $myObject
 }
 
+# Update-FormatData -PrependPath .\HostInfo.Format.ps1xml
+
 $AllComputers
 
 # It is an Array 

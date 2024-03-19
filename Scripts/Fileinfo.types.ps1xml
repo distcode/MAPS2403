@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Types>
+	<Type>
+		<Name>System.IO.FileInfo</Name>
+		<Members>
+
+			<AliasProperty>
+				<Name>Byte</Name>
+				<ReferencedMemberName>Length</ReferencedMemberName>
+			</AliasProperty>
+
+			<NoteProperty>
+				<Name>Status</Name>
+				<Value>healthy</Value>
+			</NoteProperty>
+
+			<ScriptProperty>
+				<Name>Encrypted</Name>
+				<GetScriptBlock>
+					$corFileName = $this.Fullname -replace "\\","\\"
+                    (Get-CimInstance -Query ('Select Encrypted From Cim_DataFile Where Name = "' + $corFileName + '"')).Encrypted
+				</GetScriptBlock>
+			</ScriptProperty>
+
+			<PropertySet>
+				<Name>CoreInfo</Name>
+				<ReferencedProperties>
+					<Name>Basename</Name>
+					<Name>Extension</Name>
+					<Name>Length</Name>
+				</ReferencedProperties>
+			</PropertySet>
+
+		</Members>
+	</Type>
+</Types>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+	<ViewDefinitions>
+		<View>
+			<Name>MAPSView</Name>
+			<ViewSelectedBy>
+				<TypeName>HostInfo</TypeName>
+			</ViewSelectedBy>
+
+			<TableControl>
+
+				<TableHeaders>
+
+					<TableColumnHeader>
+						<Label>Name</Label>
+						<Alignment>left</Alignment>
+					</TableColumnHeader>
+
+
+					<TableColumnHeader>
+						<Label>CPU</Label>
+                        <Alignment>right</Alignment>
+					</TableColumnHeader>
+
+                    <TableColumnHeader>
+						<Label>RAM</Label>
+                        <Alignment>right</Alignment>
+					</TableColumnHeader>
+
+                    <TableColumnHeader>
+						<Label>OS</Label>
+					</TableColumnHeader>
+
+				</TableHeaders>
+
+				<TableRowEntries>
+					<TableRowEntry>
+						<TableColumnItems>
+
+							<TableColumnItem>
+								<PropertyName>ComputerName</PropertyName>
+							</TableColumnItem>
+
+                            <TableColumnItem>
+								<PropertyName>CPU</PropertyName>
+							</TableColumnItem>
+
+                            <TableColumnItem>
+								<PropertyName>RAM</PropertyName>
+							</TableColumnItem>
+
+                            <TableColumnItem>
+								<PropertyName>OS</PropertyName>
+							</TableColumnItem>							
+
+						</TableColumnItems>
+					</TableRowEntry>
+				</TableRowEntries>
+
+			</TableControl>
+
+		</View>
+		
+	</ViewDefinitions>
+</Configuration>
