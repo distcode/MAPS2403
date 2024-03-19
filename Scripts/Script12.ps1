@@ -20,3 +20,13 @@ foreach ( $tempcomputer in $computers ) {
 }
 
 $AllComputers
+
+# It is an Array 
+$AllComputers.GetType()
+
+# Use *-object cmdlets
+$AllComputers | Sort-Object -Property Computername
+$AllComputers | Where-Object { $_.OS -eq 'Linux' }
+$AllComputers | Group-Object -Property OS
+$AllComputers | Format-List 
+# ... and many more
