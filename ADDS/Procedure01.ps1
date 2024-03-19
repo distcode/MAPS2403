@@ -64,3 +64,9 @@ New-ADGroup -Path 'OU=Detectives,dc=maps,dc=local' -Name 'Detectives' `
                                                    -GroupCategory Security `
                                                    -GroupScope Universal `
                                                    -SamAccountName Detectives
+
+Add-ADGroupMember -Identity Detectives -Members Sherlock,Jane
+
+Get-ADGroupMember -Identity Detectives
+
+Remove-ADGroupMember -Identity Detectives -Members Sherlock
