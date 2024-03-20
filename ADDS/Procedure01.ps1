@@ -70,3 +70,53 @@ Add-ADGroupMember -Identity Detectives -Members Sherlock,Jane
 Get-ADGroupMember -Identity Detectives
 
 Remove-ADGroupMember -Identity Detectives -Members Sherlock
+
+# multiple users
+$users = Get-ADUser -Filter * -SearchBase 'OU=detectives,dc=maps,dc=local'
+# Get-ADUser -Filter * -Server 'dc1.maps.local' -SearchBase 'OU=detectives,dc=maps,dc=local'
+$users
+Add-ADGroupMember -Identity detectives -Members $users
+
+Get-ADUser -Filter * -SearchBase 'OU=detectives,dc=maps,dc=local' | Add-ADGroupMember -Identity Detectives   # NOT WORKING !!!
+Get-Help Add-ADGroupMember -ShowWindow
+
+
+# Optimization
+Get-ADUser -Filter * -Properties City | Where-Object { $_.City -eq 'London' } 
+
+Get-ADUser -Filter { City -eq 'London' } -Properties City
+
+# smart cmdlets
+Get-ADGroupMember -Identity Detectives
+Get-ADUser -Identity Sherlock -Properties MemberOf
+Get-ADPrincipalGroupMembership -Identity Sherlock
+
+Search-ADAccount -LockedOut
+Search-ADAccount -AccountInactive
+
+# Mgmt of attributes
+
+Set-ADUser -Identity Sherlock -EmployeeID 'D0301' -EmployeeNumber 1 -EmployeeType 'Elementary'
+
+$htAttributes = @{
+    EmployeeID='D0301'
+    EmployeeNumber = 1
+    EmployeeType = 'Elementary'
+    # ProxyAddresses = @(...,...,...)
+}
+Set-ADUser -Identity Sherlock -Add $htAttributes
+Get-ADUser -Identity Sherlock -Properties EmployeeID,EmployeeNumber,EmployeeType
+
+$htAttributes = @{
+    EmployeeID='D0302'
+    EmployeeNumber = 2
+    EmployeeType = 'eine Frage habe ich noch ...'
+    # ProxyAddresses = @(...,...,...)
+}
+New-ADUser -Path 'OU=Detectives,dc=maps,dc=local' -Name 'Inspector Columbo' `
+                                                  -Surname 'Columbo' `
+                                                  -GivenName 'Inspector' `
+                                                  -SamAccountName 'Inspector' `
+                                                  -UserPrincipalName 'inspector@maps.local' `
+                                                  -OtherAttributes $htAttributes
+Get-ADUser -Identity Inspector -Properties EmployeeID,EmployeeNumber,EmployeeType
