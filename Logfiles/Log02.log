@@ -1,0 +1,9 @@
+#TYPE LogInformation
+"LogDate","Result","Note"
+"20.03.2024 12:14:02","SUCCESS","any note"
+"20.03.2024 12:15:02","ERROR","any other note"
+"20.03.2024 12:16:02","WAITING","poor network performance ..."
+"20.03.2024 12:16:02","ERROR","no network connection ..."
+"20.03.2024 12:27:22","WAITING","for lunch"
+"20.03.2024 12:27:22","SUCCESS","Server shut down"
+"20.03.2024 12:27:22","SUCCESS","Temp cleared"
