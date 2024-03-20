@@ -1,5 +1,5 @@
 ﻿$OrganizationalUnit = "OU=Detectives,DC=maps,DC=local"
-$GroupName = "Domain Users"
+$GroupName = "Detectives"
 
 # Set-Location AD:
 $Group = Get-ADGroup -Identity $GroupName
