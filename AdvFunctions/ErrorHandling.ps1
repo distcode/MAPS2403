@@ -5,7 +5,12 @@ $ErrorActionPreference = 'Stop'
 
 try {
     $a = 100
-    $b = 25 # Read-Host 'Bitte einen Wert eingeben'
+    # $b = 25 # Read-Host 'Bitte einen Wert eingeben'
+
+    $b = -1
+    do {
+        $b = Read-Host "Bitte einen Wert eingeben"
+    } while ( $b -eq 0 )
     
     $result = $a / $b
     
@@ -24,6 +29,6 @@ catch {
     $Error[0] | Format-List -Property * -Force
     $Error[0].InvocationInfo
 }
-finally {
-    "*** FINISHED ***"
-}
+
+
+"*** FINISHED ***"
