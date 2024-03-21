@@ -27,8 +27,8 @@ $Path = "C:\Temp\jea3.pssc"
 
 ## Rollen definieren
 $roles = @{
-    'aztrg\JEA_Info' = @{RoleCapabilities = 'Information', 'Generic'}
-    'aztrg\JEA_Service' = @{RoleCapabilities = 'ManageService', 'ManageLog', 'Generic'}
+    'maps\JEA_Info' = @{RoleCapabilities = 'Information', 'Generic'}
+    'maps\JEA_Service' = @{RoleCapabilities = 'ManageService', 'ManageLog', 'Generic'}
 }
 ## Datei anlegen
 New-PSSessionConfigurationFile -Path $Path `
@@ -68,7 +68,7 @@ $ModuleName = 'Role{0}_{1}' -f $Name,$guid
 $modulePath = "$env:programfiles\WindowsPowerShell\Modules\$ModuleName"
 ## Modul herstellen:
 New-Item -Path "$modulePath\RoleCapabilities" -ItemType Directory -Force
-New-PSRoleCapabilityFile -Path "$modulePath\RoleCapabilities\$Name.psrc" @Config
+New-PSRoleCapabilityFile -Path "$modulePath\RoleCapabilities\$Name.psrc" @Config 
 New-ModuleManifest -Path "$modulePath\$ModuleName.psd1"
 #endregion
 

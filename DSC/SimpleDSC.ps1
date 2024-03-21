@@ -23,5 +23,16 @@ Configuration SimpleDSC {
             ValueData = 6
             ValueType = 'Dword'
         }
+
+        Environment mapsEnvVar {
+            Name = 'MAPS'
+            Ensure = 'Present'
+            Value = 'SR05'
+        }
+
+
     }
 }
+
+# Videos
+# https://www.youtube.com/playlist?list=PLDveEyEaCGzxFRigX_uak9VEx6XVooUP-

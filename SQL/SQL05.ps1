@@ -9,17 +9,26 @@ try {
     $myConn.Open()
 
     $myDataAdapter = New-Object -TypeName System.Data.SqlClient.SqlDataAdapter('Select * From SalesLT.Customer', $myConn)
+    $myCommandBuilder = New-Object -TypeName System.Data.SqlClient.SqlCommandBuilder($myDataAdapter)
     $myDataTable = New-Object -TypeName System.Data.DataTable
-
+    
     $RowCount = $myDataAdapter.Fill($myDataTable)
 
-    $myDataTable
+    $newDataRow = $myDataTable.NewRow()
 
-    # $myDataTable | Select-Object -First 10 | Format-Table -Property firstname,lastname,companyname,emailaddress
-    # $myDataTable | Sort-Object -Property CompanyName | Select-Object -First 10 | Format-Table -Property firstname,lastname,companyname,emailaddress
-
-    # $myDataTable.Rows[4].LastName
-
+    $newDataRow.FirstName = 'Harry'
+    $newDataRow.LastName = 'Potter'
+    $newDataRow.CompanyName = 'Hogwarts'
+    $newDataRow.EmailAddress = 'harry@hogwarts.uk'
+    $newDataRow.PasswordHash = ( Get-FileHash -Path 'C:\Windows\win.ini')
+    $newDataRow.PasswordSalt = 'anyText'
+    $newDataRow.NameStyle = $false
+    $newDataRow.ModifiedDate = (Get-Date).Date
+    $newDataRow.rowguid = [guid]::NewGuid()
+    
+    $myDataTable.Rows.Add($newDataRow)    
+    $myDataAdapter.Update($myDataTable)
+    
     "Rows: $RowCount"
 
     "*** FINISHED ***"

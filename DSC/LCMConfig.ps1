@@ -12,6 +12,7 @@ Configuration LCMConfig {
             ConfigurationModeFrequencyMins = 60
             ConfigurationMode = 'ApplyAndAutoCorrect'
             RebootNodeIfNeeded = $true
+
         }
 
     }
